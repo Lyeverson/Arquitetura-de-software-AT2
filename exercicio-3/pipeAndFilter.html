@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filtros para textos</title>
+</head>
+<body>
+    <input type="text" id="texto" placeholder="escreva um texto">
+    <input type="button" onclick="filtros(event)" value="filtrar"> 
+</body>
+<script>
+    function filtros(event){
+        event.preventDefault();
+
+    let texto = document.getElementById("texto").value;
+    
+
+    //filtro 1
+    texto = letraMaiuscula(texto);
+
+    //filtro 2
+    texto = removeSpace(texto);
+
+    //filtro 3
+    let contagem = numberWord(texto);
+
+    let exibir = document.createElement("p");
+
+    exibir.textContent = "texto filtrado: " + texto + " contagem de palavras: " + contagem;
+
+    document.body.appendChild(exibir);
+    }
+
+    function letraMaiuscula(texto){
+        return texto.toUpperCase();
+    }
+
+    function removeSpace(texto){
+       let contador = 0;
+        for(let i=0;i<texto.length;i++){
+         if(texto[i]==" "){
+            contador++;
+         }
+         if(contador==2){
+            texto = texto.slice(0, i) + texto.slice(i + 1);
+         }
+        }
+        return texto;
+    }
+
+    function numberWord(texto){
+       let contador = 0;
+        for(let i=0;i<texto.length;i++){
+         if(texto[i]==" "){
+            contador++;
+         }
+        }
+        return contador
+    }
+</script>
+</html>
