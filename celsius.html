@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>conversor de fairehingh para celsius</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+      <h1 class="title">calcular</h1>
+      <form onsubmit="calcular(event)">
+        <input type="text" name="conta" id="conta" value="32" />
+        <input type="submit" value="converter">
+        <p id="calculo"></p>
+        <br>
+        <p id="historico">
+          historico
+        </p>
+      </form>
+      <script>
+        function calcular(event){
+          event.preventDefault();
+          var conta = document.getElementById("conta").value;
+          var resultado = (conta - 32) / 1.8;
+          console.log(resultado);
+         var mostrar = document.createElement("p")
+         document.getElementById("calculo").innerHTML = "resultado: " + resultado.toFixed(2) + " °C";
+         mostrar.textContent = resultado.toFixed(2) + " °C";
+         document.body.appendChild(mostrar);
+        }
+      </script>
+  </body>
+</html>
